@@ -1,0 +1,593 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Lobster&family=Oswald:wght@400;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .page {
+    font-family: 'Comic Neue', cursive;
+    background: #e8f4ff;
+    min-height: 100vh;
+  }
+
+  /* ── NAVBAR ── */
+  .navbar {
+    background: #1a1a6e;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 5px solid #ff6600;
+  }
+
+  .logo {
+    font-family: 'Lobster', cursive;
+    font-size: 22px;
+    color: #ffdd00;
+    transform: skewX(-8deg);
+    display: inline-block;
+    letter-spacing: 1px;
+    margin-right: 16px;
+    text-shadow: 2px 2px 0 #ff0000;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+
+  .nav-link {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    background: transparent;
+    padding: 5px 10px;
+    border: 1px solid #ffffff44;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-link:nth-child(1) { background: #cc0000; border-color: #ff6666; font-size: 11px; transform: translateY(3px); }
+  .nav-link:nth-child(3) { background: #006600; font-size: 15px; transform: translateY(-2px); }
+  .nav-link:nth-child(5) { background: #cc6600; transform: rotate(2deg); }
+
+  .nav-right {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .login-btn {
+    background: #ffdd00;
+    color: #000;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 2px solid #ff6600;
+    cursor: pointer;
+    transform: skewX(-5deg);
+  }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .announce {
+    background: #ffdd00;
+    color: #1a1a6e;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ff6600;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #1a1a6e 0%, #0066cc 60%, #00aaff 100%);
+    padding: 40px 24px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hero-text { flex: 1; min-width: 220px; }
+
+  .hero-tag {
+    background: #ff6600;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    display: inline-block;
+    transform: rotate(-1deg);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .hero h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 44px;
+    color: #ffffff;
+    line-height: 1.1;
+    text-shadow: 3px 3px 0 #ff6600, -1px -1px 0 #ffdd00;
+    transform: skewX(-3deg);
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: #cce8ff;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-family: 'Comic Neue', cursive;
+    max-width: 380px;
+  }
+
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: #ff6600;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border: 3px solid #ffdd00;
+    cursor: pointer;
+    transform: rotate(-1deg);
+    letter-spacing: 1px;
+  }
+
+  .btn-secondary {
+    background: #ffdd00;
+    color: #1a1a6e;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 18px;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    transform: rotate(2deg);
+  }
+
+  .hero-visual {
+    flex: 0 0 180px;
+    background: #ffffff22;
+    border: 3px dashed #ffdd00;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    transform: rotate(3deg);
+  }
+
+  .hero-visual .big-icon { font-size: 64px; display: block; transform: scaleX(-1); }
+  .hero-visual p { font-size: 10px; color: #ffdd00; font-family: 'Oswald', sans-serif; margin-top: 6px; letter-spacing: 1px; }
+
+  /* ── STATS ── */
+  .stats-row {
+    background: #1a1a6e;
+    display: flex;
+    justify-content: space-around;
+    padding: 14px 20px;
+    border-top: 4px solid #ff6600;
+    border-bottom: 4px solid #ff6600;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat {
+    text-align: center;
+    color: #fff;
+  }
+  .stat:nth-child(2) { transform: translateY(4px); }
+  .stat:nth-child(3) { transform: translateY(-3px); }
+
+  .stat-num {
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+    display: block;
+    color: #ffdd00;
+  }
+  .stat:nth-child(1) .stat-num { color: #ff6666; font-size: 30px; }
+  .stat:nth-child(4) .stat-num { color: #66ffaa; font-size: 22px; }
+
+  .stat-label {
+    font-size: 10px;
+    font-family: 'Oswald', sans-serif;
+    color: #aac4dd;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── FEATURES ── */
+  .features-section {
+    background: #f0f0f0;
+    padding: 28px 20px;
+    border-top: 6px double #1a1a6e;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2 {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    color: #1a1a6e;
+    text-decoration: underline wavy #ff6600;
+    transform: scaleX(0.9);
+    display: inline-block;
+  }
+
+  .section-heading p {
+    font-size: 13px;
+    color: #444;
+    margin-top: 4px;
+    transform: skewX(2deg);
+    display: inline-block;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .fcard {
+    background: #fff;
+    border: 2px solid;
+    padding: 16px 14px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .fcard:nth-child(1) { border-color: #cc0000; border-style: dashed; transform: rotate(-1.5deg); }
+  .fcard:nth-child(2) { border-color: #006600; border-width: 4px; transform: rotate(1deg) translateY(-3px); }
+  .fcard:nth-child(3) { border-color: #0000cc; transform: skewX(-2deg); }
+  .fcard:nth-child(4) { border-color: #cc6600; transform: rotate(1.5deg); }
+  .fcard:nth-child(5) { border-color: #660066; border-style: dotted; border-width: 3px; transform: rotate(-1deg) translateY(2px); }
+  .fcard:nth-child(6) { border-color: #006666; transform: skewX(2deg); }
+
+  .fcard-icon { font-size: 32px; display: block; margin-bottom: 8px; }
+  .fcard:nth-child(2) .fcard-icon { transform: rotate(-10deg); display: inline-block; }
+  .fcard:nth-child(4) .fcard-icon { transform: scaleX(-1); display: inline-block; }
+
+  .fcard-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a6e;
+    margin-bottom: 5px;
+  }
+  .fcard:nth-child(1) .fcard-title { color: #cc0000; font-size: 17px; }
+  .fcard:nth-child(3) .fcard-title { font-size: 12px; letter-spacing: 2px; }
+
+  .fcard-desc {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    font-family: 'Comic Neue', cursive;
+  }
+
+  .fcard-btn {
+    display: inline-block;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid;
+    letter-spacing: 1px;
+  }
+
+  .fcard:nth-child(1) .fcard-btn { background: #cc0000; color: #fff; border-color: #ff6666; transform: rotate(2deg); }
+  .fcard:nth-child(2) .fcard-btn { background: #006600; color: #fff; border-color: #00cc00; transform: rotate(-3deg); }
+  .fcard:nth-child(3) .fcard-btn { background: #0000cc; color: #fff; border-color: #6666ff; transform: skewX(5deg); }
+  .fcard:nth-child(4) .fcard-btn { background: #cc6600; color: #fff; border-color: #ffaa00; transform: rotate(4deg); }
+  .fcard:nth-child(5) .fcard-btn { background: #660066; color: #fff; border-color: #cc66cc; transform: rotate(-2deg) scaleX(1.1); }
+  .fcard:nth-child(6) .fcard-btn { background: #006666; color: #fff; border-color: #00cccc; transform: skewX(-4deg); }
+
+  /* ── TESTIMONIALS ── */
+  .testi-section {
+    background: #fff8e8;
+    padding: 28px 20px;
+    border-top: 4px solid #ffdd00;
+    border-bottom: 4px solid #ffdd00;
+  }
+
+  .testi-section h2 {
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+    color: #cc6600;
+    text-align: center;
+    margin-bottom: 16px;
+    transform: skewX(-2deg);
+    display: block;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .tcard {
+    background: #fff;
+    border: 2px solid #ddd;
+    padding: 14px;
+    font-size: 12px;
+    font-family: 'Comic Neue', cursive;
+    color: #333;
+    line-height: 1.5;
+  }
+  .tcard:nth-child(1) { transform: rotate(-2deg); border-color: #cc0000; }
+  .tcard:nth-child(2) { transform: translateY(4px); border-color: #006600; }
+  .tcard:nth-child(3) { transform: rotate(2deg) skewX(1deg); border-color: #0000cc; }
+
+  .tcard-name {
+    font-weight: 700;
+    font-size: 11px;
+    color: #1a1a6e;
+    display: block;
+    margin-top: 8px;
+    font-family: 'Oswald', sans-serif;
+  }
+  .stars { color: #ffdd00; font-size: 13px; display: block; margin-bottom: 4px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #111133;
+    color: #ccc;
+    padding: 20px 20px 14px;
+    border-top: 5px solid #ff6600;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    color: #ffdd00;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer-col:nth-child(1) h4 { transform: skewX(-5deg); display: inline-block; }
+  .footer-col:nth-child(3) h4 { font-size: 16px; }
+
+  .footer-col a {
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 4px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: 'Comic Neue', cursive;
+  }
+  .footer-col a:nth-child(2) { color: #ff9966; transform: translateX(4px); display: inline-block; }
+  .footer-col a:nth-child(3) { transform: translateX(-2px); display: inline-block; }
+
+  .footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-bottom span { font-size: 10px; color: #888; font-family: 'Oswald', sans-serif; }
+  .footer-bottom span:nth-child(2) { color: #ffdd00; font-size: 12px; transform: rotate(-1deg); display: inline-block; }
+
+  .misplace-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff0000;
+    color: #fff;
+    font-size: 9px;
+    font-family: 'Oswald', sans-serif;
+    padding: 3px 6px;
+    transform: rotate(8deg);
+    font-weight: 700;
+  }
+</style>
+
+<div class="page">
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <span class="logo">🤖 AI for India</span>
+    <div class="nav-links">
+      <span class="nav-link">Home</span>
+      <span class="nav-link">Features</span>
+      <span class="nav-link">Dashboard</span>
+      <span class="nav-link">About</span>
+      <span class="nav-link">Contact</span>
+    </div>
+    <div class="nav-right">
+      <span class="login-btn">LOG IN →</span>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announce">
+    <span>🎉 New Feature: Kisan AI is now LIVE for all 28 states! &nbsp; Register FREE today.</span>
+    <span style="cursor:pointer; font-size:16px;">✕</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-tag">🇮🇳 POWERED BY BHARAT</span>
+        <h1>Artificial<br>Intelligence<br>for Every<br>Indian</h1>
+        <p class="hero-sub">Empowering 1.4 billion citizens with smart AI tools for farming, health, education, and government services — in your language.</p>
+        <div class="hero-btns">
+          <button class="btn-primary">GET STARTED FREE</button>
+          <button class="btn-secondary">Watch Demo ▶</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <span class="big-icon">🤖</span>
+        <p>AI ASSISTANT<br>READY FOR YOU</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-num">1 Cr+</span>
+      <span class="stat-label">Active Users</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">22</span>
+      <span class="stat-label">Languages Supported</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">28</span>
+      <span class="stat-label">States Covered</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">99.2%</span>
+      <span class="stat-label">Accuracy Rate</span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features-section">
+    <div class="section-heading">
+      <h2>Our Key Features</h2>
+      <p>Everything an Indian citizen needs — powered by AI</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="fcard">
+        <span class="misplace-badge">NEW</span>
+        <span class="fcard-icon">🧑‍🌾</span>
+        <div class="fcard-title">Kisan AI</div>
+        <p class="fcard-desc">Smart crop recommendations, weather alerts, and mandi prices for farmers across India.</p>
+        <button class="fcard-btn">Explore →</button>
+      </div>
+
+      <div class="fcard">
+        <span class="fcard-icon">🏥</span>
+        <div class="fcard-title">Health Diagnosis</div>
+        <p class="fcard-desc">AI-powered symptom checker and nearest hospital locator available in 22 languages.</p>
+        <button class="fcard-btn">Try Now →</button>
+      </div>
+
+      <div class="fcard">
+        <span class="fcard-icon">📚</span>
+        <div class="fcard-title">Shiksha Bot</div>
+        <p class="fcard-desc">Personalised AI tutoring for students from Class 1 to competitive exams, completely free.</p>
+        <button class="fcard-btn">Learn More →</button>
+      </div>
+
+      <div class="fcard">
+        <span class="fcard-icon">🏛️</span>
+        <div class="fcard-title">Sarkari AI</div>
+        <p class="fcard-desc">Navigate government schemes, apply for ration card, Aadhaar, and PAN — all in one place.</p>
+        <button class="fcard-btn">Access →</button>
+      </div>
+
+      <div class="fcard">
+        <span class="fcard-icon">💰</span>
+        <div class="fcard-title">Paisa Smart</div>
+        <p class="fcard-desc">AI financial advisor for savings, investments, and micro-loans tailored for Indian households.</p>
+        <button class="fcard-btn">Start Saving →</button>
+      </div>
+
+      <div class="fcard">
+        <span class="fcard-icon">🗣️</span>
+        <div class="fcard-title">Bhasha AI</div>
+        <p class="fcard-desc">Real-time translation and voice assistant supporting Hindi, Tamil, Telugu, Bengali, and more.</p>
+        <button class="fcard-btn">Translate →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testi-section">
+    <h2>What People Are Saying 💬</h2>
+    <div class="testi-grid">
+
+      <div class="tcard">
+        <span class="stars">★★★★★</span>
+        "Kisan AI helped me choose the right crop this season. My yield went up by 30%. Truly helpful for small farmers like me."
+        <span class="tcard-name">— Ramesh Kumar, Uttar Pradesh</span>
+      </div>
+
+      <div class="tcard">
+        <span class="stars">★★★★☆</span>
+        "Shiksha Bot is excellent for my children. They use it every day after school. Very easy to use even in Hindi."
+        <span class="tcard-name">— Priya Sharma, Chennai</span>
+      </div>
+
+      <div class="tcard">
+        <span class="stars">★★★★★</span>
+        "Sarkari AI helped me apply for PM Awas Yojana in just 10 minutes. No need to visit the office anymore!"
+        <span class="tcard-name">— Suresh Mane, Pune</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>AI for India</h4>
+        <a>About Us</a>
+        <a>Our Mission</a>
+        <a>Press & Media</a>
+        <a>Careers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Features</h4>
+        <a>Kisan AI</a>
+        <a>Health Diagnosis</a>
+        <a>Shiksha Bot</a>
+        <a>Bhasha AI</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a>Help Center</a>
+        <a>Privacy Policy</a>
+        <a>Terms of Service</a>
+        <a>Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a>Twitter / X</a>
+        <a>Instagram</a>
+        <a>YouTube</a>
+        <a>WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 AI for India. All rights reserved.</span>
+      <span>🇮🇳 Made with Pride in Bharat</span>
+      <span>contact@ai4india.gov.in</span>
+    </div>
+  </div>
+
+</div>
